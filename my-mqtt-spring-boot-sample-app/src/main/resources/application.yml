@@ -1,3 +1,5 @@
 baeldung.greeter:
   userName: Lionel
   afternoonMessage: Bon après midi
+
+mqtt.server.uri: tcp://localhost:1883

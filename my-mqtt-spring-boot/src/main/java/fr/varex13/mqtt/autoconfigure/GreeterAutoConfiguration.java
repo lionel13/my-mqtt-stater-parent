@@ -2,6 +2,7 @@ package fr.varex13.mqtt.autoconfigure;
 
 import fr.varex13.mqtt.library.Greeter;
 import fr.varex13.mqtt.library.GreetingConfig;
+import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -12,7 +13,7 @@ import static fr.varex13.mqtt.library.GreeterConfigParams.*;
 
 @Configuration
 @ConditionalOnClass(Greeter.class)
-@EnableConfigurationProperties(GreeterProperties.class)
+@EnableConfigurationProperties({GreeterProperties.class, MqttServerProperties.class})
 public class GreeterAutoConfiguration {
 
     @Bean
@@ -38,4 +39,16 @@ public class GreeterAutoConfiguration {
     public Greeter greeter(GreetingConfig greetingConfig) {
         return new Greeter(greetingConfig);
     }
+
+
+
+    @Bean
+    @ConditionalOnMissingBean
+    MqttConnectionOptions options(final MqttServerProperties mqttServerProperties) {
+        final MqttConnectionOptions options = new MqttConnectionOptions();
+        options.setServerURIs(new String[]{mqttServerProperties.getUri()});
+        System.out.println(options.getServerURIs());
+        return options;
+    }
+
 }
