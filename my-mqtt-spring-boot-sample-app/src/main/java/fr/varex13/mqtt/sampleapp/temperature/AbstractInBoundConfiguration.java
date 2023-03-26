@@ -8,15 +8,14 @@ import org.springframework.messaging.MessageHeaders;
 
 public abstract class AbstractInBoundConfiguration<T> {
     protected final IntegrationFlowContext flowContext;
-    private String topic;
-    private Class<T> topicType;
+    private final String topic;
+    private final Class<T> topicType;
 
-    protected AbstractInBoundConfiguration(IntegrationFlowContext flowContext, final String humidite, final Class<T> humiditeDtoClass) {
+    protected AbstractInBoundConfiguration(IntegrationFlowContext flowContext, final String topic, final Class<T> topicType) {
         this.flowContext = flowContext;
-        topic = humidite;
-        topicType = humiditeDtoClass;
+        this.topic = topic;
+        this.topicType = topicType;
     }
-
 
     @PostConstruct
     public void init() {
@@ -31,5 +30,5 @@ public abstract class AbstractInBoundConfiguration<T> {
                 .get();
     }
 
-    protected abstract Object processNominal(T dto, MessageHeaders headers) ;
+    protected abstract T processNominal(T dto, MessageHeaders headers) ;
 }
