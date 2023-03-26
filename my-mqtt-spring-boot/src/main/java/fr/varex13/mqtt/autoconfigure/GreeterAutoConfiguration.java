@@ -40,14 +40,11 @@ public class GreeterAutoConfiguration {
         return new Greeter(greetingConfig);
     }
 
-
-
     @Bean
     @ConditionalOnMissingBean
     MqttConnectionOptions options(final MqttServerProperties mqttServerProperties) {
         final MqttConnectionOptions options = new MqttConnectionOptions();
         options.setServerURIs(new String[]{mqttServerProperties.getUri()});
-        System.out.println(options.getServerURIs());
         return options;
     }
 

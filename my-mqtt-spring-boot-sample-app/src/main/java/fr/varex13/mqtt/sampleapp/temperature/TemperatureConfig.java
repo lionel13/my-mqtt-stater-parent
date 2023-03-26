@@ -18,13 +18,6 @@ public class TemperatureConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TemperatureConfig.class);
 
-//    private final TemperatureService temperatureService;
-//
-//    public TemperatureConfig(final TemperatureService temperatureService) {
-//        this.temperatureService = temperatureService;
-//    }
-
-
     @Bean
     IntegrationFlow inboundTemperature() {
         return IntegrationFlow
@@ -42,7 +35,7 @@ public class TemperatureConfig {
     private Object processNominal(final TemperatureDTO temperatureDTO, final MessageHeaders headers) {
         LOGGER.info("new Message temperature ! {}", temperatureDTO);
         headers.forEach((s, o) -> LOGGER.info("{} = {}", s, o));
-//        temperatureService.hendleCreation(toTemperature(temperatureDTO));
+//  TODO      temperatureService.hendleCreation(toTemperature(temperatureDTO));
         return null;
     }
 }
