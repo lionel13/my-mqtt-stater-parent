@@ -1,5 +1,6 @@
 package fr.varex13.mqtt.library.configuration.outbound;
 
+import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +17,8 @@ public class OutboundConfiguration {
 
     @Bean
     MessageHandler outbound(final MqttConnectionOptions options) {
-        AbstractMqttMessageHandler handler = new Mqttv5PahoMessageHandler(options, "producer");
-        handler.setDefaultTopic("TEST");
+        AbstractMqttMessageHandler<IMqttAsyncClient, MqttConnectionOptions> handler = new Mqttv5PahoMessageHandler(options, "producer");
+        handler.setDefaultTopic("test"); //TODO a remplacer
         return handler;
     }
 
