@@ -20,9 +20,13 @@ public class GreeterAutoConfiguration {
     @ConditionalOnMissingBean
     public GreetingConfig greeterConfig(final GreeterProperties greeterProperties) {
         String userName = greeterProperties.getUserName() == null ? System.getProperty("user.name") : greeterProperties.getUserName();
+        
         String morningMessage = greeterProperties.getMorningMessage() == null ? "Good Morning" : greeterProperties.getMorningMessage();
+      
         String afternoonMessage = greeterProperties.getAfternoonMessage() == null ? "Good Afternoon" : greeterProperties.getAfternoonMessage();
+        
         String eveningMessage = greeterProperties.getEveningMessage() == null ? "Good Evening" : greeterProperties.getEveningMessage();
+        
         String nightMessage = greeterProperties.getNightMessage() == null ? "Good Night" : greeterProperties.getNightMessage();
 
         GreetingConfig greetingConfig = new GreetingConfig();
