@@ -14,4 +14,5 @@ public class MqttServerProperties {
     public String getUri() {
         return uri;
     }
+
 }

@@ -11,7 +11,9 @@ public abstract class AbstractInBoundConfiguration<T> {
     private final String topic;
     private final Class<T> topicType;
 
-    protected AbstractInBoundConfiguration(IntegrationFlowContext flowContext, final String topic, final Class<T> topicType) {
+    protected AbstractInBoundConfiguration(final IntegrationFlowContext flowContext,
+                                           final String topic,
+                                           final Class<T> topicType) {
         this.flowContext = flowContext;
         this.topic = topic;
         this.topicType = topicType;
@@ -22,7 +24,7 @@ public abstract class AbstractInBoundConfiguration<T> {
         this.flowContext.registration(inbound(topic, topicType)).register();
     }
 
-  protected IntegrationFlow inbound(final String topic, final Class<T> topicType) {
+    protected IntegrationFlow inbound(final String topic, final Class<T> topicType) {
         return IntegrationFlow
                 .from(topic)
                 .transform(Transformers.fromJson(topicType))
@@ -30,5 +32,5 @@ public abstract class AbstractInBoundConfiguration<T> {
                 .get();
     }
 
-    protected abstract T processNominal(T dto, MessageHeaders headers) ;
+    protected abstract T processNominal(T dto, MessageHeaders headers);
 }
