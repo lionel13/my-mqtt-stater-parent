@@ -17,10 +17,11 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    #- name: Set up JDK
-    #  uses: actions/setup-java@v3
-    #  with:
-    #    java-version: '17'
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
     - name: SonarCloud Scan
       run: mvn clean verify sonar:sonar
      # uses: sonarsource/sonarcloud-github-action@main
