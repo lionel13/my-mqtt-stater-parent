@@ -1,13 +1,13 @@
 name: SonarCloud
-  on:
-    push:
-      branches:
-        - main
-        - master
-        - develop
-        - 'releases/**'
-    pull_request:
-      types: [opened, synchronize, reopened]
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+      - 'releases/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   Analysis:
     runs-on: ubuntu-latest
