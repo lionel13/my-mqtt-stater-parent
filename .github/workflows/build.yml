@@ -13,12 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
       - name: Analyze with SonarCloud
-        uses: SonarSource/sonarcloud-github-action@master
+        run: ./mvnw -B verify sonar:sonar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN  }}
-        with:
-          args:
-            -Dsonar.projectKey=my-mqtt-stater-parent
-            -Dsonar.organization=lionel13-github
+        #with:
+        #  args:
+        #    -Dsonar.projectKey=my-mqtt-stater-parent
+        #    -Dsonar.organization=lionel13-github
