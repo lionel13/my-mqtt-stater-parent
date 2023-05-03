@@ -43,7 +43,13 @@ public class GreeterAutoConfiguration {
     public Greeter greeter(GreetingConfig greetingConfig) {
         return new Greeter(greetingConfig);
     }
-
+/*
+    @Bean
+    @ConditionalOnMissingBean
+    public Greeter greeter(GreetingConfig greetingConfig) {
+        return new Greeter(greetingConfig);
+    }
+*/
     @Bean
     @ConditionalOnMissingBean
     MqttConnectionOptions options(final MqttServerProperties mqttServerProperties) {
