@@ -6,9 +6,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class GreeterProperties {
 
     private String userName;
+    
     private String morningMessage;
+    
     private String afternoonMessage;
+    
     private String eveningMessage;
+    
     private String nightMessage;
 
     public String getUserName() {
