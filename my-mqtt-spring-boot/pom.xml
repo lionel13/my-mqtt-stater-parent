@@ -9,7 +9,7 @@
     <artifactId>my-mqtt-spring-boot</artifactId>
 
     <properties>
-        <spring-boot.version>3.0.4</spring-boot.version>
+        <spring-boot.version>3.0.7</spring-boot.version>
         <my-mqtt-library.version>1.0.0.0-SNAPSHOT</my-mqtt-library.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <java.version>17</java.version>
